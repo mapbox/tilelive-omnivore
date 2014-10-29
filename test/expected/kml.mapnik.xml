@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE Map[]>
 <Map srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over" maximum-extent="-20037508.34,-20037508.34,20037508.34,20037508.34">
-
   <Parameters>
     <Parameter name="center">-110.13325,42.5407</Parameter>
     <Parameter name="bounds">-155.8387,17.7682,-64.4278,67.3132</Parameter>
@@ -10,71 +9,52 @@
     <Parameter name="maxzoom">8</Parameter>
     <Parameter name="minzoom">1</Parameter>
   </Parameters>
-
   
-  <Layer name="Magnitude 6"
-    buffer-size="8"
-    srs="+init=epsg:4326">
-
+  <Layer name="Magnitude 6" buffer-size="8" srs="+init=epsg:4326">
     <Datasource>
-       <Parameter name="type">ogr</Parameter>
-       <Parameter name="file">[FILEPATH]</Parameter>
-       <Parameter name="layer">Magnitude 6</Parameter>
+      <Parameter name="type">ogr</Parameter>
+      <Parameter name="file">[FILEPATH]</Parameter>
+      <Parameter name="layer">Magnitude 6</Parameter>
     </Datasource>
   </Layer>
   
-  <Layer name="Magnitude 5"
-    buffer-size="8"
-    srs="+init=epsg:4326">
-
+  <Layer name="Magnitude 5" buffer-size="8" srs="+init=epsg:4326">
     <Datasource>
-       <Parameter name="type">ogr</Parameter>
-       <Parameter name="file">/Users/r/gh/mapbox/tilelive-omnivore/test/fixtures/kml.metadata.json</Parameter>
-       <Parameter name="layer">Magnitude 5</Parameter>
+      <Parameter name="type">ogr</Parameter>
+      <Parameter name="file">[FILEPATH]</Parameter>
+      <Parameter name="layer">Magnitude 5</Parameter>
     </Datasource>
   </Layer>
   
-  <Layer name="Magnitude 4"
-    buffer-size="8"
-    srs="+init=epsg:4326">
-
+  <Layer name="Magnitude 4" buffer-size="8" srs="+init=epsg:4326">
     <Datasource>
-       <Parameter name="type">ogr</Parameter>
-       <Parameter name="file">/Users/r/gh/mapbox/tilelive-omnivore/test/fixtures/kml.metadata.json</Parameter>
-       <Parameter name="layer">Magnitude 4</Parameter>
+      <Parameter name="type">ogr</Parameter>
+      <Parameter name="file">[FILEPATH]</Parameter>
+      <Parameter name="layer">Magnitude 4</Parameter>
     </Datasource>
   </Layer>
   
-  <Layer name="Magnitude 3"
-    buffer-size="8"
-    srs="+init=epsg:4326">
-
+  <Layer name="Magnitude 3" buffer-size="8" srs="+init=epsg:4326">
     <Datasource>
-       <Parameter name="type">ogr</Parameter>
-       <Parameter name="file">/Users/r/gh/mapbox/tilelive-omnivore/test/fixtures/kml.metadata.json</Parameter>
-       <Parameter name="layer">Magnitude 3</Parameter>
+      <Parameter name="type">ogr</Parameter>
+      <Parameter name="file">[FILEPATH]</Parameter>
+      <Parameter name="layer">Magnitude 3</Parameter>
     </Datasource>
   </Layer>
   
-  <Layer name="Magnitude 2"
-    buffer-size="8"
-    srs="+init=epsg:4326">
-
+  <Layer name="Magnitude 2" buffer-size="8" srs="+init=epsg:4326">
     <Datasource>
-       <Parameter name="type">ogr</Parameter>
-       <Parameter name="file">/Users/r/gh/mapbox/tilelive-omnivore/test/fixtures/kml.metadata.json</Parameter>
-       <Parameter name="layer">Magnitude 2</Parameter>
+      <Parameter name="type">ogr</Parameter>
+      <Parameter name="file">[FILEPATH]</Parameter>
+      <Parameter name="layer">Magnitude 2</Parameter>
     </Datasource>
   </Layer>
   
-  <Layer name="Magnitude 1"
-    buffer-size="8"
-    srs="+init=epsg:4326">
-
+  <Layer name="Magnitude 1" buffer-size="8" srs="+init=epsg:4326">
     <Datasource>
-       <Parameter name="type">ogr</Parameter>
-       <Parameter name="file">/Users/r/gh/mapbox/tilelive-omnivore/test/fixtures/kml.metadata.json</Parameter>
-       <Parameter name="layer">Magnitude 1</Parameter>
+      <Parameter name="type">ogr</Parameter>
+      <Parameter name="file">[FILEPATH]</Parameter>
+      <Parameter name="layer">Magnitude 1</Parameter>
     </Datasource>
   </Layer>
   

@@ -9,11 +9,13 @@ var Omnivore = require('..');
 var queue = require('queue-async');
 
 test('metadata => xml', function(t) {
-  var xml;
+  var xml, match, sanitized;
   for (var type in fixtures) {
     xml = Omnivore.getXml(fixtures[type]);
-    var m = /<Parameter name="file">(.+?)<\/Parameter>/.exec(xml);
-    if (m) xml = xml.replace(m[1], '[FILEPATH]');
+    xml = xml.replace(
+      /<Parameter name="file">(.+?)<\/Parameter>/g,
+      '<Parameter name="file">[FILEPATH]</Parameter>'
+    );
 
     if (process.env.UPDATE) {
       try { assert.equal(xml, expected[type]); }
