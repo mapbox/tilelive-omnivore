@@ -1,6 +1,6 @@
 {
   "name": "tilelive-omnivore",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Implements the tilelive API for a variety of raw data formats",
   "main": "index.js",
   "scripts": {
