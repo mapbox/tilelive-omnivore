@@ -7,6 +7,7 @@ var expected = require('./expected');
 var datasets = require('./datasets');
 var Omnivore = require('..');
 var queue = require('queue-async');
+var tilelive = require('tilelive');
 
 test('metadata => xml', function(t) {
   var xml, match, sanitized;
@@ -50,6 +51,7 @@ test('build bridges', function(t) {
       t.ifError(err, 'source ready for ' + type);
       src.getInfo(function(err, info) {
         t.ifError(err, 'got info for ' + type);
+        t.notOk(tilelive.verify(info), 'info is valid');
         src.close(function(err) {
           t.ifError(err, 'closed source for ' + type);
           callback();
