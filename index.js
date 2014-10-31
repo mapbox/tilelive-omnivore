@@ -31,7 +31,7 @@ function Omnivore(uri, callback) {
 }
 
 Omnivore.registerProtocols = function(tilelive) {
-    tilelive.protocols['omnivore:'] = CardboardTiles;
+    tilelive.protocols['omnivore:'] = Omnivore;
 };
 
 Omnivore.getXml = function(metadata) {
