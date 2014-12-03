@@ -5,7 +5,7 @@
     <Parameter name="center">-110.13325,42.5407,1</Parameter>
     <Parameter name="bounds">-155.8387,17.7682,-64.4278,67.3132</Parameter>
     <Parameter name="format">pbf</Parameter>
-    <Parameter name="json"><![CDATA[[{"id":"Magnitude_6","description":"","minzoom":0,"maxzoom":22,"fields":{"Name":"String","Description":"String"}},{"id":"Magnitude_5","description":"","minzoom":0,"maxzoom":22,"fields":{"Name":"String","Description":"String"}},{"id":"Magnitude_4","description":"","minzoom":0,"maxzoom":22,"fields":{"Name":"String","Description":"String"}},{"id":"Magnitude_3","description":"","minzoom":0,"maxzoom":22,"fields":{"Name":"String","Description":"String"}},{"id":"Magnitude_2","description":"","minzoom":0,"maxzoom":22,"fields":{"Name":"String","Description":"String"}},{"id":"Magnitude_1","description":"","minzoom":0,"maxzoom":22,"fields":{"Name":"String","Description":"String"}}]]]></Parameter>
+    <Parameter name="json"><![CDATA[{"vector_layers":[{"id":"Magnitude_6","description":"","minzoom":0,"maxzoom":22,"fields":{"Name":"String","Description":"String"}},{"id":"Magnitude_5","description":"","minzoom":0,"maxzoom":22,"fields":{"Name":"String","Description":"String"}},{"id":"Magnitude_4","description":"","minzoom":0,"maxzoom":22,"fields":{"Name":"String","Description":"String"}},{"id":"Magnitude_3","description":"","minzoom":0,"maxzoom":22,"fields":{"Name":"String","Description":"String"}},{"id":"Magnitude_2","description":"","minzoom":0,"maxzoom":22,"fields":{"Name":"String","Description":"String"}},{"id":"Magnitude_1","description":"","minzoom":0,"maxzoom":22,"fields":{"Name":"String","Description":"String"}}]}]]></Parameter>
     <Parameter name="maxzoom">8</Parameter>
     <Parameter name="minzoom">1</Parameter>
   </Parameters>
@@ -58,5 +58,4 @@
     </Datasource>
   </Layer>
   
-
 </Map>

@@ -5,7 +5,7 @@
     <Parameter name="center"><%= center.join(',') + ',' + minzoom %></Parameter>
     <Parameter name="bounds"><%= extent.join(',') %></Parameter>
     <Parameter name="format"><%= format %></Parameter>
-    <% if (format === 'pbf') { %><Parameter name="json"><![CDATA[<%= JSON.stringify(json.vector_layers) %>]]></Parameter><% } %>
+    <% if (format === 'pbf') { %><Parameter name="json"><![CDATA[<%= JSON.stringify(json) %>]]></Parameter><% } %>
     <Parameter name="maxzoom"><%= maxzoom %></Parameter>
     <Parameter name="minzoom"><%= minzoom %></Parameter>
   </Parameters>
@@ -18,5 +18,4 @@
     </Datasource>
   </Layer>
   <% }); %>
-
 </Map>
