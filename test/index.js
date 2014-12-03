@@ -60,3 +60,18 @@ test('build bridges', function(t) {
     });
   }
 });
+
+test('info contains vector_layers', function(t) {
+  var uri = 'omnivore://' + datasets.shp;
+  new Omnivore(uri, function(err, src) {
+    t.ifError(err, 'source ready for shp');
+    src.getInfo(function(err, info) {
+      t.ifError(err, 'got info for shp');
+      t.ok(info.vector_layers, 'has vector_layers');
+      src.close(function(err) {
+        t.ifError(err, 'closed source for shp');
+        t.end();
+      });
+    });
+  });
+});
