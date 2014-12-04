@@ -39,7 +39,7 @@ Omnivore.getXml = function(metadata) {
   metadata.format = metadata.dstype === 'gdal' ? 'webp' : 'pbf';
   metadata.layers = metadata.layers.map(function(name) {
     return {
-      layer: name,
+      layer: name.replace('.', '_'),
       type: metadata.dstype,
       file: metadata.filepath
     };

@@ -10,7 +10,15 @@
     <Parameter name="minzoom"><%= minzoom %></Parameter>
   </Parameters>
   <% _.each(layers, function(l) { %>
+  <% if (l.type === 'gdal') { %>
+  <Style name="<%= l.layer %>" filter-mode="first">
+    <Rule>
+      <RasterSymbolizer opacity="1" scaling="bilinear" />
+    </Rule>
+  </Style>
+  <% } %>
   <Layer name="<%= l.layer %>" buffer-size="8" srs="<%= projection %>">
+    <% if (l.type === 'gdal') { %><StyleName><%= l.layer %></StyleName><% } %>
     <Datasource>
       <Parameter name="type"><%= l.type %></Parameter>
       <Parameter name="file"><%= l.file %></Parameter>

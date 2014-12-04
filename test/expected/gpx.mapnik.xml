@@ -10,7 +10,9 @@
     <Parameter name="minzoom">0</Parameter>
   </Parameters>
   
+  
   <Layer name="waypoints" buffer-size="8" srs="+init=epsg:4326">
+    
     <Datasource>
       <Parameter name="type">ogr</Parameter>
       <Parameter name="file">[FILEPATH]</Parameter>
@@ -18,7 +20,9 @@
     </Datasource>
   </Layer>
   
+  
   <Layer name="routes" buffer-size="8" srs="+init=epsg:4326">
+    
     <Datasource>
       <Parameter name="type">ogr</Parameter>
       <Parameter name="file">[FILEPATH]</Parameter>
@@ -26,7 +30,9 @@
     </Datasource>
   </Layer>
   
+  
   <Layer name="route_points" buffer-size="8" srs="+init=epsg:4326">
+    
     <Datasource>
       <Parameter name="type">ogr</Parameter>
       <Parameter name="file">[FILEPATH]</Parameter>

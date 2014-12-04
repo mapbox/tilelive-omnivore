@@ -10,7 +10,9 @@
     <Parameter name="minzoom">1</Parameter>
   </Parameters>
   
+  
   <Layer name="Magnitude 6" buffer-size="8" srs="+init=epsg:4326">
+    
     <Datasource>
       <Parameter name="type">ogr</Parameter>
       <Parameter name="file">[FILEPATH]</Parameter>
@@ -18,7 +20,9 @@
     </Datasource>
   </Layer>
   
+  
   <Layer name="Magnitude 5" buffer-size="8" srs="+init=epsg:4326">
+    
     <Datasource>
       <Parameter name="type">ogr</Parameter>
       <Parameter name="file">[FILEPATH]</Parameter>
@@ -26,7 +30,9 @@
     </Datasource>
   </Layer>
   
+  
   <Layer name="Magnitude 4" buffer-size="8" srs="+init=epsg:4326">
+    
     <Datasource>
       <Parameter name="type">ogr</Parameter>
       <Parameter name="file">[FILEPATH]</Parameter>
@@ -34,7 +40,9 @@
     </Datasource>
   </Layer>
   
+  
   <Layer name="Magnitude 3" buffer-size="8" srs="+init=epsg:4326">
+    
     <Datasource>
       <Parameter name="type">ogr</Parameter>
       <Parameter name="file">[FILEPATH]</Parameter>
@@ -42,7 +50,9 @@
     </Datasource>
   </Layer>
   
+  
   <Layer name="Magnitude 2" buffer-size="8" srs="+init=epsg:4326">
+    
     <Datasource>
       <Parameter name="type">ogr</Parameter>
       <Parameter name="file">[FILEPATH]</Parameter>
@@ -50,7 +60,9 @@
     </Datasource>
   </Layer>
   
+  
   <Layer name="Magnitude 1" buffer-size="8" srs="+init=epsg:4326">
+    
     <Datasource>
       <Parameter name="type">ogr</Parameter>
       <Parameter name="file">[FILEPATH]</Parameter>
