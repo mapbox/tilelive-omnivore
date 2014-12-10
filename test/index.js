@@ -75,3 +75,35 @@ test('info contains vector_layers', function(t) {
     });
   });
 });
+
+test('getTile returns tiles for gdal source', function(t) {
+  var uri = 'omnivore://' + datasets.tif;
+  new Omnivore(uri, function(err, src) {
+    t.ifError(err, 'source ready for tif');
+    src.getTile(8, 8, 8, function(err, data, headers) {
+      t.ifError(err, 'got tiles for tif');
+      t.ok(data, 'has data');
+      t.ok(headers, 'has headers');
+      src.close(function(err) {
+        t.ifError(err, 'closed source for tif');
+        t.end();
+      });
+    });
+  });
+});
+
+test('getTile returns tiles for ogr source', function(t) {
+  var uri = 'omnivore://' + datasets.kml;
+  new Omnivore(uri, function(err, src) {
+    t.ifError(err, 'source ready for kml');
+    src.getTile(1, 1, 1, function(err, data, headers) {
+      t.ifError(err, 'got tiles for kml');
+      t.ok(data, 'has data');
+      t.ok(headers, 'has headers');
+      src.close(function(err) {
+        t.ifError(err, 'closed source for kml');
+        t.end();
+      });
+    });
+  });
+});
