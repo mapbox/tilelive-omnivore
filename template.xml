@@ -17,7 +17,7 @@
     </Rule>
   </Style>
   <% } %>
-  <Layer name="<%= l.layer %>" buffer-size="8" srs="<%= projection %>">
+  <Layer name="<%= l.layer %>" buffer-size="<% if (l.type === 'gdal') { %>0<% } else { %>8<% } %>" srs="<%= projection %>">
     <% if (l.type === 'gdal') { %><StyleName><%= l.layer %></StyleName><% } %>
     <Datasource>
       <Parameter name="type"><%= l.type %></Parameter>
