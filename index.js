@@ -35,6 +35,8 @@ Omnivore.registerProtocols = function(tilelive) {
 };
 
 Omnivore.getXml = function(metadata) {
+  // Stopgap while 16 bit is not supported
+  if (metadata.dstype === 'gdal' && metadata.raster.band[1].rasterDatatype !== 'Byte') return callback('16 bit TIFFs are not supported');
   metadata = _.clone(metadata);
   metadata.format = metadata.dstype === 'gdal' ? 'webp' : 'pbf';
   metadata.layers = metadata.layers.map(function(name) {
