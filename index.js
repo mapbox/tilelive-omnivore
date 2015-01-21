@@ -19,8 +19,8 @@ function Omnivore(uri, callback) {
   function getXml(err, metadata) {
     if (err) return callback(err);
     
-    // Stopgap while 16 bit is not supported
-    if (metadata.dstype === 'gdal' && metadata.raster.band[1].rasterDatatype !== 'Byte') return callback('16 bit TIFFs are not supported');
+    // Stopgap while only 8 bit TIFFs are supported
+    if (metadata.dstype === 'gdal' && metadata.raster.bands[0].rasterDatatype !== 'Byte') return callback('16 bit TIFFs are not supported');
     
     metadata.filepath = filepath;
     var mapnikXml = Omnivore.getXml(metadata);
