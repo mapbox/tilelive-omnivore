@@ -107,3 +107,19 @@ test('getTile returns tiles for ogr source', function(t) {
     });
   });
 });
+
+test('getTile returns tiles for geojson source', function(t) {
+  var uri = 'omnivore://' + datasets.geojson;
+  new Omnivore(uri, function(err, src) {
+    t.ifError(err, 'source ready for geojson');
+    src.getTile(13, 2342, 3132, function(err, data, headers) {
+      t.ifError(err, 'got tile for geojson');
+      t.ok(data, 'has data');
+      t.ok(headers, 'has headers');
+      src.close(function(err) {
+        t.ifError(err, 'closed source for geojson');
+        t.end();
+      });
+    });
+  });
+});
