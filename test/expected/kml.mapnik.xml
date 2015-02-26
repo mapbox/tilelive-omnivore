@@ -2,16 +2,16 @@
 <!DOCTYPE Map[]>
 <Map srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over" maximum-extent="-20037508.34,-20037508.34,20037508.34,20037508.34">
   <Parameters>
-    <Parameter name="center">-110.13325,42.5407,1</Parameter>
-    <Parameter name="bounds">-155.8387,17.7682,-64.4278,67.3132</Parameter>
+    <Parameter name="center">-0.0995500000000078,6.350449999999995,0</Parameter>
+    <Parameter name="bounds">-179.28269999999998,-56.1221,179.08359999999996,68.823</Parameter>
     <Parameter name="format">pbf</Parameter>
-    <Parameter name="json"><![CDATA[{"vector_layers":[{"id":"Magnitude_6","description":"","minzoom":0,"maxzoom":22,"fields":{"Name":"String","Description":"String"}},{"id":"Magnitude_5","description":"","minzoom":0,"maxzoom":22,"fields":{"Name":"String","Description":"String"}},{"id":"Magnitude_4","description":"","minzoom":0,"maxzoom":22,"fields":{"Name":"String","Description":"String"}},{"id":"Magnitude_3","description":"","minzoom":0,"maxzoom":22,"fields":{"Name":"String","Description":"String"}},{"id":"Magnitude_2","description":"","minzoom":0,"maxzoom":22,"fields":{"Name":"String","Description":"String"}},{"id":"Magnitude_1","description":"","minzoom":0,"maxzoom":22,"fields":{"Name":"String","Description":"String"}}]}]]></Parameter>
-    <Parameter name="maxzoom">8</Parameter>
-    <Parameter name="minzoom">1</Parameter>
+    <Parameter name="json"><![CDATA[{"vector_layers":[{"id":"Magnitude_6","description":"","minzoom":0,"maxzoom":22,"fields":{"Name":"a string","Description":"a string"}},{"id":"Magnitude_5","description":"","minzoom":0,"maxzoom":22,"fields":{"Name":"a string","Description":"a string"}},{"id":"Magnitude_4","description":"","minzoom":0,"maxzoom":22,"fields":{"Name":"a string","Description":"a string"}},{"id":"Magnitude_3","description":"","minzoom":0,"maxzoom":22,"fields":{"Name":"a string","Description":"a string"}},{"id":"Magnitude_2","description":"","minzoom":0,"maxzoom":22,"fields":{"Name":"a string","Description":"a string"}},{"id":"Magnitude_1","description":"","minzoom":0,"maxzoom":22,"fields":{"Name":"a string","Description":"a string"}}]}]]></Parameter>
+    <Parameter name="maxzoom">6</Parameter>
+    <Parameter name="minzoom">0</Parameter>
   </Parameters>
   
   
-  <Layer name="Magnitude 6" buffer-size="8" srs="+init=epsg:4326">
+  <Layer name="Magnitude 6" buffer-size="8" srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
     
     <Datasource>
       <Parameter name="type">ogr</Parameter>
@@ -21,7 +21,7 @@
   </Layer>
   
   
-  <Layer name="Magnitude 5" buffer-size="8" srs="+init=epsg:4326">
+  <Layer name="Magnitude 5" buffer-size="8" srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
     
     <Datasource>
       <Parameter name="type">ogr</Parameter>
@@ -31,7 +31,7 @@
   </Layer>
   
   
-  <Layer name="Magnitude 4" buffer-size="8" srs="+init=epsg:4326">
+  <Layer name="Magnitude 4" buffer-size="8" srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
     
     <Datasource>
       <Parameter name="type">ogr</Parameter>
@@ -41,7 +41,7 @@
   </Layer>
   
   
-  <Layer name="Magnitude 3" buffer-size="8" srs="+init=epsg:4326">
+  <Layer name="Magnitude 3" buffer-size="8" srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
     
     <Datasource>
       <Parameter name="type">ogr</Parameter>
@@ -51,7 +51,7 @@
   </Layer>
   
   
-  <Layer name="Magnitude 2" buffer-size="8" srs="+init=epsg:4326">
+  <Layer name="Magnitude 2" buffer-size="8" srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
     
     <Datasource>
       <Parameter name="type">ogr</Parameter>
@@ -61,7 +61,7 @@
   </Layer>
   
   
-  <Layer name="Magnitude 1" buffer-size="8" srs="+init=epsg:4326">
+  <Layer name="Magnitude 1" buffer-size="8" srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
     
     <Datasource>
       <Parameter name="type">ogr</Parameter>

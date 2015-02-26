@@ -2,16 +2,16 @@
 <!DOCTYPE Map[]>
 <Map srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over" maximum-extent="-20037508.34,-20037508.34,20037508.34,20037508.34">
   <Parameters>
-    <Parameter name="center">-71.1139805,42.44903000000001,0</Parameter>
-    <Parameter name="bounds">-71.122845,42.43095,-71.105116,42.467110000000005</Parameter>
+    <Parameter name="center">-71.11478749999993,42.43485299999996,0</Parameter>
+    <Parameter name="bounds">-71.12660199999993,42.40105099999996,-71.10297299999993,42.468654999999956</Parameter>
     <Parameter name="format">pbf</Parameter>
-    <Parameter name="json"><![CDATA[{"vector_layers":[{"id":"waypoints","description":"","minzoom":0,"maxzoom":22,"fields":{"name":"String","cmt":"String","desc":"String","src":"String","link1_href":"String","link1_text":"String","link1_type":"String","link2_href":"String","link2_text":"String","link2_type":"String","number":"Number","type":"String"}},{"id":"routes","description":"","minzoom":0,"maxzoom":22,"fields":{"name":"String","cmt":"String","desc":"String","src":"String","link1_href":"String","link1_text":"String","link1_type":"String","link2_href":"String","link2_text":"String","link2_type":"String","number":"Number","type":"String"}},{"id":"route_points","description":"","minzoom":0,"maxzoom":22,"fields":{"name":"String","cmt":"String","desc":"String","src":"String","link1_href":"String","link1_text":"String","link1_type":"String","link2_href":"String","link2_text":"String","link2_type":"String","number":"Number","type":"String"}}]}]]></Parameter>
+    <Parameter name="json"><![CDATA[{"vector_layers":[{"id":"waypoints","description":"","minzoom":0,"maxzoom":22,"fields":{"ageofdgpsdata":"a double","cmt":"a string","desc":"a string","dgpsid":"an integer","ele":"a double","fix":"a string","geoidheight":"a double","hdop":"a double","magvar":"a double","name":"a string","pdop":"a double","sat":"an integer","src":"a string","sym":"a string","time":"a datetime","type":"a string","url":"a string","urlname":"a string","vdop":"a double"}},{"id":"routes","description":"","minzoom":0,"maxzoom":22,"fields":{"cmt":"a string","desc":"a string","link1_href":"a string","link1_text":"a string","link1_type":"a string","link2_href":"a string","link2_text":"a string","link2_type":"a string","name":"a string","number":"an integer","src":"a string","type":"a string"}},{"id":"route_points","description":"","minzoom":0,"maxzoom":22,"fields":{"ageofdgpsdata":"a double","cmt":"a string","desc":"a string","dgpsid":"an integer","ele":"a double","fix":"a string","geoidheight":"a double","hdop":"a double","magvar":"a double","name":"a string","pdop":"a double","route_fid":"an integer","route_point_id":"an integer","sat":"an integer","src":"a string","sym":"a string","time":"a datetime","type":"a string","url":"a string","urlname":"a string","vdop":"a double"}}]}]]></Parameter>
     <Parameter name="maxzoom">16</Parameter>
     <Parameter name="minzoom">0</Parameter>
   </Parameters>
   
   
-  <Layer name="waypoints" buffer-size="8" srs="+init=epsg:4326">
+  <Layer name="waypoints" buffer-size="8" srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
     
     <Datasource>
       <Parameter name="type">ogr</Parameter>
@@ -21,7 +21,7 @@
   </Layer>
   
   
-  <Layer name="routes" buffer-size="8" srs="+init=epsg:4326">
+  <Layer name="routes" buffer-size="8" srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
     
     <Datasource>
       <Parameter name="type">ogr</Parameter>
@@ -31,7 +31,7 @@
   </Layer>
   
   
-  <Layer name="route_points" buffer-size="8" srs="+init=epsg:4326">
+  <Layer name="route_points" buffer-size="8" srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
     
     <Datasource>
       <Parameter name="type">ogr</Parameter>
