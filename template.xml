@@ -23,6 +23,7 @@
       <Parameter name="type"><%= l.type %></Parameter>
       <Parameter name="file"><%= l.file %></Parameter>
       <Parameter name="layer"><%= l.layer %></Parameter>
+      <% if (l.type === 'geojson') { %><Parameter name="cache_features">false</Parameter><% } %>
     </Datasource>
   </Layer>
   <% }); %>

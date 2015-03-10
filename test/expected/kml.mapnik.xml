@@ -17,6 +17,7 @@
       <Parameter name="type">ogr</Parameter>
       <Parameter name="file">[FILEPATH]</Parameter>
       <Parameter name="layer">Magnitude 6</Parameter>
+      
     </Datasource>
   </Layer>
   
@@ -27,6 +28,7 @@
       <Parameter name="type">ogr</Parameter>
       <Parameter name="file">[FILEPATH]</Parameter>
       <Parameter name="layer">Magnitude 5</Parameter>
+      
     </Datasource>
   </Layer>
   
@@ -37,6 +39,7 @@
       <Parameter name="type">ogr</Parameter>
       <Parameter name="file">[FILEPATH]</Parameter>
       <Parameter name="layer">Magnitude 4</Parameter>
+      
     </Datasource>
   </Layer>
   
@@ -47,6 +50,7 @@
       <Parameter name="type">ogr</Parameter>
       <Parameter name="file">[FILEPATH]</Parameter>
       <Parameter name="layer">Magnitude 3</Parameter>
+      
     </Datasource>
   </Layer>
   
@@ -57,6 +61,7 @@
       <Parameter name="type">ogr</Parameter>
       <Parameter name="file">[FILEPATH]</Parameter>
       <Parameter name="layer">Magnitude 2</Parameter>
+      
     </Datasource>
   </Layer>
   
@@ -67,6 +72,7 @@
       <Parameter name="type">ogr</Parameter>
       <Parameter name="file">[FILEPATH]</Parameter>
       <Parameter name="layer">Magnitude 1</Parameter>
+      
     </Datasource>
   </Layer>
   

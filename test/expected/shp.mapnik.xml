@@ -17,6 +17,7 @@
       <Parameter name="type">shape</Parameter>
       <Parameter name="file">[FILEPATH]</Parameter>
       <Parameter name="layer">world_merc</Parameter>
+      
     </Datasource>
   </Layer>
   

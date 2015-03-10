@@ -17,6 +17,7 @@
       <Parameter name="type">ogr</Parameter>
       <Parameter name="file">[FILEPATH]</Parameter>
       <Parameter name="layer">waypoints</Parameter>
+      
     </Datasource>
   </Layer>
   
@@ -27,6 +28,7 @@
       <Parameter name="type">ogr</Parameter>
       <Parameter name="file">[FILEPATH]</Parameter>
       <Parameter name="layer">routes</Parameter>
+      
     </Datasource>
   </Layer>
   
@@ -37,6 +39,7 @@
       <Parameter name="type">ogr</Parameter>
       <Parameter name="file">[FILEPATH]</Parameter>
       <Parameter name="layer">route_points</Parameter>
+      
     </Datasource>
   </Layer>
   

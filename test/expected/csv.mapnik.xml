@@ -17,6 +17,7 @@
       <Parameter name="type">csv</Parameter>
       <Parameter name="file">[FILEPATH]</Parameter>
       <Parameter name="layer">bbl_current_csv</Parameter>
+      
     </Datasource>
   </Layer>
   

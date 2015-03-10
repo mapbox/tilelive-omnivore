@@ -17,6 +17,7 @@
       <Parameter name="type">geojson</Parameter>
       <Parameter name="file">[FILEPATH]</Parameter>
       <Parameter name="layer">DC_polygon.geo</Parameter>
+      <Parameter name="cache_features">false</Parameter>
     </Datasource>
   </Layer>
   
