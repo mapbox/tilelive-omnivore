@@ -23,6 +23,7 @@
       <Parameter name="type">gdal</Parameter>
       <Parameter name="file">[FILEPATH]</Parameter>
       <Parameter name="layer">sample</Parameter>
+      
     </Datasource>
   </Layer>
   
