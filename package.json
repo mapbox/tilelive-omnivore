@@ -17,14 +17,14 @@
   },
   "homepage": "https://github.com/mapbox/tilelive-omnivore",
   "dependencies": {
-    "mapnik-omnivore": "^5.0.2",
-    "tilelive-bridge": "^1.2.6",
+    "mapnik-omnivore": "^5.0.4",
+    "tilelive-bridge": "^1.2.7",
     "underscore": "^1.7.0"
   },
   "devDependencies": {
     "mapnik-test-data": "http://mapbox-npm.s3.amazonaws.com/package/mapnik-test-data-2.0.3-fece0a9c546074a1479e9eae2333184029bb2279.tgz",
     "queue-async": "^1.0.7",
     "tape": "^3.0.1",
-    "tilelive": "~5.5.4"
+    "tilelive": "^5.6.1"
   }
 }
