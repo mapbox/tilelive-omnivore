@@ -17,8 +17,8 @@
   },
   "homepage": "https://github.com/mapbox/tilelive-omnivore",
   "dependencies": {
-    "mapnik-omnivore": "git://github.com/mapbox/mapnik-omnivore.git#mapnik-3.4.0",
-    "tilelive-bridge": "git://github.com/mapbox/tilelive-bridge.git#mapnik-3.4.0",
+    "mapnik-omnivore": "~6.2.0",
+    "tilelive-bridge": "~1.4.0",
     "underscore": "^1.7.0"
   },
   "devDependencies": {
