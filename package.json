@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/mapbox/tilelive-omnivore",
   "dependencies": {
-    "mapnik-omnivore": "~6.3.0",
+    "mapnik-omnivore": "https://github.com/mapbox/mapnik-omnivore/tarball/mapnik-union",
     "tilelive-bridge": "~2.1.0",
     "underscore": "^1.7.0"
   },
