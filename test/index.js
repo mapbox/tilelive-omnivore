@@ -9,6 +9,15 @@ var Omnivore = require('..');
 var queue = require('queue-async');
 var tilelive = require('tilelive');
 
+test('should set protocol as we would like', function(assert) {
+    var fake_tilelive = {
+        protocols: {}
+    };
+    Omnivore.registerProtocols(fake_tilelive);
+    assert.equal(fake_tilelive.protocols['omnivore:'],Omnivore);
+    assert.end();
+});
+
 test('metadata => xml', function(t) {
   var xml, match, sanitized;
   for (var type in fixtures) {
