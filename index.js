@@ -17,10 +17,14 @@ function Omnivore(uri, callback) {
   getMetadata(filepath, getXml);
 
   function getXml(err, metadata) {
-    if (err) return callback(err);
+    if (err) {
+      return callback(err);
+    }
 
     // Stopgap while only 8 bit TIFFs are supported
-    if (metadata.dstype === 'gdal' && metadata.raster.bands[0].rasterDatatype !== 'Byte') return callback('Only 8 bit TIFFs are supported');
+    if (metadata.dstype === 'gdal' && metadata.raster.bands[0].rasterDatatype !== 'Byte') {
+      return callback('Only 8 bit TIFFs are supported');
+    }
 
     metadata.filepath = filepath;
     var mapnikXml = Omnivore.getXml(metadata);
@@ -28,7 +32,9 @@ function Omnivore(uri, callback) {
   }
 
   function setBridge(err, source) {
-    if (err) return callback(err);
+    if (err) {
+      return callback(err);
+    }
     omnivore.bridge = source;
     callback(null, omnivore);
   }

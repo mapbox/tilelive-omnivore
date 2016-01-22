@@ -1,10 +1,11 @@
 {
   "name": "tilelive-omnivore",
-  "version": "1.5.1",
+  "version": "2.0.0",
   "description": "Implements the tilelive API for a variety of raw data formats",
   "main": "index.js",
   "scripts": {
-    "test": "node test"
+    "test": "tape test/index.js",
+    "coverage": "istanbul cover tape test/index.js && coveralls < ./coverage/lcov.info"
   },
   "repository": {
     "type": "git",
@@ -17,14 +18,16 @@
   },
   "homepage": "https://github.com/mapbox/tilelive-omnivore",
   "dependencies": {
-    "mapnik-omnivore": "~6.3.0",
-    "tilelive-bridge": "~2.1.0",
+    "mapnik-omnivore": "~7.0.0",
+    "tilelive-bridge": "~2.2.1",
     "underscore": "^1.7.0"
   },
   "devDependencies": {
     "mapnik-test-data": "http://mapbox-npm.s3.amazonaws.com/package/mapnik-test-data-2.0.3-fece0a9c546074a1479e9eae2333184029bb2279.tgz",
     "queue-async": "^1.0.7",
     "tape": "^3.0.1",
-    "tilelive": "^5.7.0"
+    "tilelive": "^5.7.0",
+    "istanbul": "~0.3.17",
+    "coveralls": "~2.11.2"
   }
 }
