@@ -1,4 +1,8 @@
-# Changlog
+# Changelog
+
+## 2.1.0
+
+- Upgraded to mapnik-omnivore@7.1.0. This enables using node-gdal@0.8.0
 
 ## 2.0.0
 
