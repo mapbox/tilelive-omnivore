@@ -5,7 +5,7 @@
 var Omnivore = require('..');
 var getMetadata = require('mapnik-omnivore').digest;
 
-var usage = 'usage: generate-xml.js <filepath>';
+var usage = 'usage: mapnik-omnivore <filepath>';
 
 var filepath = process.argv[2];
 

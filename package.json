@@ -22,6 +22,9 @@
     "tilelive-bridge": "~2.2.1",
     "underscore": "^1.7.0"
   },
+  "bin": {
+    "mapnik-omnivore": "bin/mapnik-omnivore"
+  },
   "devDependencies": {
     "mapnik-test-data": "http://mapbox-npm.s3.amazonaws.com/package/mapnik-test-data-2.0.3-fece0a9c546074a1479e9eae2333184029bb2279.tgz",
     "queue-async": "^1.0.7",

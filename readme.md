@@ -25,6 +25,14 @@ new Omnivore(uri, function(err, source) {
 });
 ```
 
+Using the command line will output the XML directly to your shell.
+
+```bash
+mapnik-omnivore <filepath>
+```
+
 ## Works with
 
 any file supported by [mapnik-omnivore](https://github.com/mapbox/mapnik-omnivore)
+
+## Command Line
