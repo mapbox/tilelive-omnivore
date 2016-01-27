@@ -8,6 +8,8 @@ var datasets = require('./datasets');
 var Omnivore = require('..');
 var queue = require('queue-async');
 var tilelive = require('tilelive');
+var OmnivoreBin = path.resolve(__dirname, '..', 'bin', 'mapnik-omnivore');
+var spawn = require('child_process').spawn;
 
 test('should set protocol as we would like', function(assert) {
     var fake_tilelive = {
@@ -131,4 +133,50 @@ test('getTile returns tiles for geojson source', function(t) {
       });
     });
   });
+});
+
+// test CLI command `mapnik-omnivore`
+test('[bin/mapnik-omnivore] errors if not passed valid path', function(assert) {
+  var args = [OmnivoreBin];
+
+  spawn(process.execPath, args)
+    .on('error', function(err) {
+      assert.ok(err, 'should error');
+    })
+    .on('close', function(code) {
+      assert.equal(code, 1, 'exit 1');
+      assert.end();
+    })
+    .stderr.pipe(process.stdout);
+});
+
+test('[bin/mapnik-omnivore] runs on an absolute file path', function(assert) {
+  var args = [OmnivoreBin, datasets.geojson];
+
+  spawn(process.execPath, args)
+    .on('error', function(err) {
+      assert.ifError(err, 'should not error');
+    })
+    .on('close', function(code) {
+      assert.equal(code, 0, 'exit 0');
+      assert.end();
+    })
+    .stderr.pipe(process.stdout);
+});
+
+test('[bin/mapnik-omnivore] runs on a relative file path', function(assert) {
+  var options = {
+    cwd: path.resolve(__dirname, '..', 'node_modules')
+  };
+  var args = [OmnivoreBin, path.relative(options.cwd, datasets.geojson)];
+
+  spawn(process.execPath, args, options)
+    .on('error', function(err) {
+      assert.ifError(err, 'should not error');
+    })
+    .on('close', function(code) {
+      assert.equal(code, 0, 'exit 0');
+      assert.end();
+    })
+    .stderr.pipe(process.stdout);
 });
