@@ -29,7 +29,7 @@
     "mapnik-test-data": "https://mapbox-npm.s3.amazonaws.com/package/mapnik-test-data-2.1.1-d1476b261f018c28f08c573de3c9885386f52315.tgz",
     "queue-async": "^1.0.7",
     "tape": "^3.0.1",
-    "tilelive": "^5.7.0",
+    "tilelive": "^5.11.0",
     "istanbul": "~0.3.17",
     "coveralls": "~2.11.2"
   }
