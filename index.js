@@ -4,6 +4,7 @@ var fs = require('fs');
 var Bridge = require('tilelive-bridge');
 var getMetadata = require('mapnik-omnivore').digest;
 var _ = require('underscore');
+var queue = require('queue-async');
 
 var xml = fs.readFileSync(path.join(__dirname, 'template.xml'), 'utf8');
 
@@ -11,25 +12,36 @@ module.exports = Omnivore;
 
 function Omnivore(uri, callback) {
   uri = url.parse(uri);
-  var filepath = path.resolve(uri.pathname);
+  var files = uri.pathname.split(',');
   var omnivore = this;
 
-  getMetadata(filepath, getXml);
+  var q = queue();
+  files.forEach(function(file) {
+    var filepath = path.resolve(file);
+    q.defer(function(next) {
+      getMetadata(filepath, function(err, metadata) {
+        if (err) next(err);
+        // Stopgap while only 8 bit TIFFs are supported
+        if (metadata.dstype === 'gdal' && metadata.raster.bands[0].rasterDatatype !== 'Byte') {
+          return next('Only 8 bit TIFFs are supported');
+        }
+        metadata.filepath = filepath;
+        next(null, metadata);
+      });
+    });
+  });
 
-  function getXml(err, metadata) {
-    if (err) {
+  q.awaitAll(function(err, metadata) {
+    if (err) { return callback(err); }
+    try {
+      var mapnikXml = Omnivore.getXml(metadata);
+    }
+    catch (err) {
       return callback(err);
     }
-
-    // Stopgap while only 8 bit TIFFs are supported
-    if (metadata.dstype === 'gdal' && metadata.raster.bands[0].rasterDatatype !== 'Byte') {
-      return callback('Only 8 bit TIFFs are supported');
-    }
-
-    metadata.filepath = filepath;
-    var mapnikXml = Omnivore.getXml(metadata);
     new Bridge({ xml: mapnikXml }, setBridge);
-  }
+  });
+
 
   function setBridge(err, source) {
     if (err) {
@@ -41,20 +53,56 @@ function Omnivore(uri, callback) {
 }
 
 Omnivore.registerProtocols = function(tilelive) {
-    tilelive.protocols['omnivore:'] = Omnivore;
+  tilelive.protocols['omnivore:'] = Omnivore;
 };
 
 Omnivore.getXml = function(metadata) {
   metadata = _.clone(metadata);
-  metadata.format = metadata.dstype === 'gdal' ? 'webp' : 'pbf';
-  metadata.layers = metadata.layers.map(function(name) {
-    return {
-      layer: name,
-      type: metadata.dstype,
-      file: metadata.filepath
-    };
+  if (Array.isArray(metadata)) {
+    if (metadata.length > 1) {
+      if (!metadata.every(function(md) { return md.filetype === '.geojson'; })) {
+        throw new Error('Multiple files allowed for GeoJSON only.');
+      }
+    }
+  } else {
+    metadata = [metadata];
+  }
+  //javascript: clone from an array doesn't work!!!
+  //var final_metadata = _.clone(metadata[0]);
+  var final_metadata = JSON.parse(JSON.stringify(metadata[0]));
+  delete final_metadata.filepath;
+  delete final_metadata.filename;
+  final_metadata.format = final_metadata.dstype === 'gdal' ? 'webp' : 'pbf';
+  final_metadata.layers = [];
+  final_metadata.filesize = 0;
+  if (final_metadata.json && final_metadata.json.vector_layers) { final_metadata.json.vector_layers = []; }
+  metadata.forEach(function(md) {
+    final_metadata.filesize += md.filesize;
+    final_metadata.extent[0] = Math.min(final_metadata.extent[0], md.extent[0]);
+    final_metadata.extent[1] = Math.min(final_metadata.extent[1], md.extent[1]);
+    final_metadata.extent[2] = Math.min(final_metadata.extent[2], md.extent[2]);
+    final_metadata.extent[3] = Math.min(final_metadata.extent[3], md.extent[3]);
+    Array.prototype.push.apply(
+      final_metadata.layers,
+      md.layers.map(function(layer) {
+        return {
+          layer: layer === Object(layer) ? layer.layer : layer,
+          type: md.dstype,
+          file: layer === Object(layer) ? layer.file : md.filepath
+        };
+      })
+    );
+    if (final_metadata.json && final_metadata.json.vector_layers) {
+      Array.prototype.push.apply(
+        final_metadata.json.vector_layers,
+        md.json.vector_layers
+      );
+    }
   });
-  return _.template(xml)(metadata);
+  final_metadata.center[0] = (final_metadata.extent[0] + final_metadata.extent[2]) / 2;
+  final_metadata.center[1] = (final_metadata.extent[1] + final_metadata.extent[3]) / 2;
+  //console.log(JSON.stringify(final_metadata, null, '  '));
+  return _.template(xml)(final_metadata);
 };
 
 Omnivore.prototype.getInfo = function(callback) {

@@ -12,16 +12,16 @@ var OmnivoreBin = path.resolve(__dirname, '..', 'bin', 'mapnik-omnivore');
 var spawn = require('child_process').spawn;
 
 test('should set protocol as we would like', function(assert) {
-    var fake_tilelive = {
-        protocols: {}
-    };
-    Omnivore.registerProtocols(fake_tilelive);
-    assert.equal(fake_tilelive.protocols['omnivore:'],Omnivore);
-    assert.end();
+  var fake_tilelive = {
+    protocols: {}
+  };
+  Omnivore.registerProtocols(fake_tilelive);
+  assert.equal(fake_tilelive.protocols['omnivore:'], Omnivore);
+  assert.end();
 });
 
 test('metadata => xml', function(t) {
-  var xml, match, sanitized;
+  var xml;
   for (var type in fixtures) {
     xml = Omnivore.getXml(fixtures[type]);
     xml = xml.replace(
@@ -31,7 +31,7 @@ test('metadata => xml', function(t) {
 
     if (process.env.UPDATE) {
       try { assert.equal(xml, expected[type]); }
-      catch(err) { newExpectations(type, xml); }
+      catch (err) { newExpectations(type, xml); }
     } else {
       t.equal(xml, expected[type], 'correct xml for ' + type);
     }
@@ -44,11 +44,66 @@ function newExpectations(type, xml) {
   fs.writeFileSync(path.resolve(__dirname, 'expected', type + '.mapnik.xml'), xml);
 }
 
+test('multiple inputs (metadata)', function(t) {
+  t.doesNotThrow(
+    function() { Omnivore.getXml(fixtures['multi-geojson']); },
+    'does not throw on multiple GeoJSONs'
+  );
+  t.throws(
+    function() { Omnivore.getXml([fixtures['geojson'], fixtures['tif']]); },
+    'throws on different types'
+  );
+  t.throws(
+    function() { Omnivore.getXml([fixtures['csv'], fixtures['kml']]); },
+    'throws on different types, not being GeoJSON'
+  );
+  t.end();
+});
+
+test('multiple inputs (file): all GeoJSON', function(t) {
+  t.doesNotThrow(
+    function() {
+      new Omnivore('omnivore://' + datasets['multi-geojson'], function(err, src) {
+        if (err) throw err;
+        src.getInfo(function(err, info) {
+          if (err) { throw err; }
+          if (info.vector_layers.length != 2) {
+            throw new Error('Expected two vector layers.');
+          }
+          t.end();
+        });
+      });
+    },
+    'does not throw on multiple GeoJSONs'
+  );
+});
+
+test('multiple inputs (file): different types', function(t) {
+  var multitypes = {
+    'geojson+tif': 'omnivore://' + datasets['geojson'] + ',' + datasets['tif'],
+    'csv+kml': 'omnivore://' + datasets['csv'] + ',' + datasets['kml']
+  };
+  var q = queue();
+  for (var mt in multitypes) {
+    q.defer(testMultitypes, mt, multitypes[mt]);
+  }
+
+  q.await(function() {
+    t.end();
+  });
+
+  function testMultitypes(types, uri, next) {
+    new Omnivore(uri, function(err) {
+      t.equal(err.message, 'Multiple files allowed for GeoJSON only.', 'got error for ' + types);
+      next();
+    });
+  }
+});
+
 test('build bridges', function(t) {
   var q = queue();
 
   for (var type in datasets) {
-    var uri = 'omnivore://' + datasets[type];
     q.defer(testDataset, type);
   }
 
