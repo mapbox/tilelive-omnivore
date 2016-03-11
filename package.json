@@ -4,8 +4,8 @@
   "description": "Implements the tilelive API for a variety of raw data formats",
   "main": "index.js",
   "scripts": {
-    "test": "tape test/index.js",
-    "coverage": "istanbul cover tape test/index.js && coveralls < ./coverage/lcov.info"
+    "test": "nyc tape test/index.js",
+    "coverage": "nyc --reporter=html tape test/index.js && opener coverage/index.html"
   },
   "repository": {
     "type": "git",
@@ -26,11 +26,12 @@
     "mapnik-omnivore": "bin/mapnik-omnivore"
   },
   "devDependencies": {
+    "eslint": "^2.4.0",
     "mapnik-test-data": "https://mapbox-npm.s3.amazonaws.com/package/mapnik-test-data-2.1.1-d1476b261f018c28f08c573de3c9885386f52315.tgz",
+    "nyc": "^6.0.0",
+    "opener": "^1.4.1",
     "queue-async": "^1.0.7",
     "tape": "^3.0.1",
-    "tilelive": "^5.11.0",
-    "istanbul": "~0.3.17",
-    "coveralls": "~2.11.2"
+    "tilelive": "^5.11.0"
   }
 }

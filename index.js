@@ -11,7 +11,7 @@ module.exports = Omnivore;
 
 function Omnivore(uri, callback) {
   uri = url.parse(uri);
-  var filepath = path.resolve(uri.pathname);
+  var filepath = path.resolve(decodeURI(uri.pathname));
   var omnivore = this;
 
   getMetadata(filepath, getXml);
@@ -41,7 +41,7 @@ function Omnivore(uri, callback) {
 }
 
 Omnivore.registerProtocols = function(tilelive) {
-    tilelive.protocols['omnivore:'] = Omnivore;
+  tilelive.protocols['omnivore:'] = Omnivore;
 };
 
 Omnivore.getXml = function(metadata) {
