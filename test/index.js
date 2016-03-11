@@ -12,16 +12,16 @@ var OmnivoreBin = path.resolve(__dirname, '..', 'bin', 'mapnik-omnivore');
 var spawn = require('child_process').spawn;
 
 test('should set protocol as we would like', function(assert) {
-    var fake_tilelive = {
-        protocols: {}
-    };
-    Omnivore.registerProtocols(fake_tilelive);
-    assert.equal(fake_tilelive.protocols['omnivore:'],Omnivore);
-    assert.end();
+  var fake_tilelive = {
+    protocols: {}
+  };
+  Omnivore.registerProtocols(fake_tilelive);
+  assert.equal(fake_tilelive.protocols['omnivore:'],Omnivore);
+  assert.end();
 });
 
 test('metadata => xml', function(t) {
-  var xml, match, sanitized;
+  var xml;
   for (var type in fixtures) {
     xml = Omnivore.getXml(fixtures[type]);
     xml = xml.replace(
@@ -48,7 +48,6 @@ test('build bridges', function(t) {
   var q = queue();
 
   for (var type in datasets) {
-    var uri = 'omnivore://' + datasets[type];
     q.defer(testDataset, type);
   }
 
