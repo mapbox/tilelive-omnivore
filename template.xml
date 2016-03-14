@@ -11,14 +11,14 @@
   </Parameters>
   <% _.each(layers, function(l) { %>
   <% if (l.type === 'gdal') { %>
-  <Style name="<%= l.layer %>" filter-mode="first">
+  <Style name="<%= l.name %>" filter-mode="first">
     <Rule>
       <RasterSymbolizer opacity="1" scaling="bilinear" />
     </Rule>
   </Style>
   <% } %>
-  <Layer name="<%= l.layer %>" buffer-size="<% if (l.type === 'gdal') { %>0<% } else { %>8<% } %>" srs="<%= projection %>">
-    <% if (l.type === 'gdal') { %><StyleName><%= l.layer %></StyleName><% } %>
+  <Layer name="<%= l.name %>" buffer-size="<% if (l.type === 'gdal') { %>0<% } else { %>8<% } %>" srs="<%= projection %>">
+    <% if (l.type === 'gdal') { %><StyleName><%= l.name %></StyleName><% } %>
     <Datasource>
       <Parameter name="type"><%= l.type %></Parameter>
       <Parameter name="file"><%= l.file %></Parameter>

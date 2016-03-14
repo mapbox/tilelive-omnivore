@@ -10,8 +10,9 @@ var xml = fs.readFileSync(path.join(__dirname, 'template.xml'), 'utf8');
 module.exports = Omnivore;
 
 function Omnivore(uri, callback) {
-  uri = url.parse(uri);
+  uri = url.parse(uri, true);
   var filepath = path.resolve(decodeURI(uri.pathname));
+  var layerName = uri.query.layerName ? decodeURI(uri.query.layerName) : null;
   var omnivore = this;
 
   getMetadata(filepath, getXml);
@@ -27,7 +28,7 @@ function Omnivore(uri, callback) {
     }
 
     metadata.filepath = filepath;
-    var mapnikXml = Omnivore.getXml(metadata);
+    var mapnikXml = Omnivore.getXml(metadata, layerName);
     new Bridge({ xml: mapnikXml }, setBridge);
   }
 
@@ -44,16 +45,28 @@ Omnivore.registerProtocols = function(tilelive) {
   tilelive.protocols['omnivore:'] = Omnivore;
 };
 
-Omnivore.getXml = function(metadata) {
+Omnivore.getXml = function(metadata, layerName) {
+  var override = metadata.layers.length === 1 && layerName;
+
   metadata = _.clone(metadata);
   metadata.format = metadata.dstype === 'gdal' ? 'webp' : 'pbf';
-  metadata.layers = metadata.layers.map(function(name) {
+
+  if (override && metadata.format === 'pbf') {
+    metadata.json.vector_layers = metadata.json.vector_layers.map(function(layer) {
+      layer.id = layerName;
+      return layer;
+    });  
+  }
+
+  metadata.layers = metadata.layers.map(function(layer) {
     return {
-      layer: name,
+      name: override ? layerName : layer,
+      layer: layer,
       type: metadata.dstype,
       file: metadata.filepath
     };
   });
+
   return _.template(xml)(metadata);
 };
 
