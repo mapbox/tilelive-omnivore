@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.2.1
+
+- Update tilelive-bridge, solving a bug in out-of-bounds x and y.
+
 ## 2.2.0
 
 - Updated mapnik to 3.5.0, tilelive to 5.11.0, and tilelive-bridge to 2.3.0, and mapnik-omnivore to 7.3.0
