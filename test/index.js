@@ -10,18 +10,21 @@ var queue = require('queue-async');
 var tilelive = require('tilelive');
 var OmnivoreBin = path.resolve(__dirname, '..', 'bin', 'mapnik-omnivore');
 var spawn = require('child_process').spawn;
+var VectorTile = require('vector-tile').VectorTile;
+var Protobuf = require('pbf');
+var zlib = require('zlib');
 
 test('should set protocol as we would like', function(assert) {
-    var fake_tilelive = {
-        protocols: {}
-    };
-    Omnivore.registerProtocols(fake_tilelive);
-    assert.equal(fake_tilelive.protocols['omnivore:'],Omnivore);
-    assert.end();
+  var fake_tilelive = {
+    protocols: {}
+  };
+  Omnivore.registerProtocols(fake_tilelive);
+  assert.equal(fake_tilelive.protocols['omnivore:'],Omnivore);
+  assert.end();
 });
 
 test('metadata => xml', function(t) {
-  var xml, match, sanitized;
+  var xml;
   for (var type in fixtures) {
     xml = Omnivore.getXml(fixtures[type]);
     xml = xml.replace(
@@ -39,6 +42,30 @@ test('metadata => xml', function(t) {
   t.end();
 });
 
+test('[names] layerName override for single-layered data types', function(t) {
+  ['csv', 'geojson', 'shp', 'tif'].forEach(function(type) {
+    var xml = Omnivore.getXml(fixtures[type], 'named').replace(
+      /<Parameter name="file">(.+?)<\/Parameter>/g,
+      '<Parameter name="file">[FILEPATH]</Parameter>'
+    );
+
+    t.equal(xml, expected[type + '.named'].replace(/Layer name="(.*?)"/g, 'Layer name="named"'), 'correctly named xml for ' + type);
+  });
+  t.end();
+});
+
+test('[names] layerName override ignored for multi-layered data types', function(t) {
+  ['gpx', 'kml'].forEach(function(type) {
+    var xml = Omnivore.getXml(fixtures[type], 'named').replace(
+      /<Parameter name="file">(.+?)<\/Parameter>/g,
+      '<Parameter name="file">[FILEPATH]</Parameter>'
+    );
+
+    t.equal(xml, expected[type], 'did not override names for ' + type);
+  });
+  t.end();
+});
+
 function newExpectations(type, xml) {
   console.log('updated expected xml for ' + type);
   fs.writeFileSync(path.resolve(__dirname, 'expected', type + '.mapnik.xml'), xml);
@@ -48,7 +75,6 @@ test('build bridges', function(t) {
   var q = queue();
 
   for (var type in datasets) {
-    var uri = 'omnivore://' + datasets[type];
     q.defer(testDataset, type);
   }
 
@@ -130,6 +156,26 @@ test('getTile returns tiles for geojson source', function(t) {
       src.close(function(err) {
         t.ifError(err, 'closed source for geojson');
         t.end();
+      });
+    });
+  });
+});
+
+test('can override layer name via uri', function(t) {
+  var uri = 'omnivore://' + datasets.geojson + '?layerName=named';
+  new Omnivore(uri, function(err, src) {
+    t.ifError(err, 'source ready for geojson');
+    src.getTile(13, 2342, 3132, function(err, data) {
+      t.ifError(err, 'got tile for geojson');
+
+      zlib.gunzip(data, function(err, unzipped) {
+        if (err) return t.end(err);
+        var tile = new VectorTile(new Protobuf(unzipped));
+        t.deepEqual(Object.keys(tile.layers), ['named'], 'renamed layer in vector tile');
+        src.close(function(err) {
+          t.ifError(err, 'closed source for geojson');
+          t.end();
+        });
       });
     });
   });
