@@ -11,8 +11,9 @@ var xml = fs.readFileSync(path.join(__dirname, 'template.xml'), 'utf8');
 module.exports = Omnivore;
 
 function Omnivore(uri, callback) {
-  uri = url.parse(uri);
+  uri = url.parse(uri, true);
   var files = uri.pathname.split(',');
+  var layerName = uri.query.layerName ? decodeURI(uri.query.layerName) : null;
   var omnivore = this;
 
   var q = queue();
@@ -34,7 +35,7 @@ function Omnivore(uri, callback) {
   q.awaitAll(function(err, metadata) {
     if (err) { return callback(err); }
     try {
-      var mapnikXml = Omnivore.getXml(metadata);
+      var mapnikXml = Omnivore.getXml(metadata, layerName);
     }
     catch (err) {
       return callback(err);
@@ -56,17 +57,20 @@ Omnivore.registerProtocols = function(tilelive) {
   tilelive.protocols['omnivore:'] = Omnivore;
 };
 
-Omnivore.getXml = function(metadata) {
+Omnivore.getXml = function(metadata, layerName) {
+  var override;
   metadata = _.clone(metadata);
+
   if (Array.isArray(metadata)) {
     if (metadata.length > 1) {
       if (!metadata.every(function(md) { return md.filetype === '.geojson'; })) {
         throw new Error('Multiple files allowed for GeoJSON only.');
       }
     }
-  } else {
-    metadata = [metadata];
-  }
+  } else metadata = [metadata];
+
+  if (metadata.length === 1) override = metadata[0].layers.length === 1 && layerName;
+
   //javascript: clone from an array doesn't work!!!
   //var final_metadata = _.clone(metadata[0]);
   var final_metadata = JSON.parse(JSON.stringify(metadata[0]));
@@ -85,23 +89,38 @@ Omnivore.getXml = function(metadata) {
     Array.prototype.push.apply(
       final_metadata.layers,
       md.layers.map(function(layer) {
-        return {
+        var final_layer = {
           layer: layer === Object(layer) ? layer.layer : layer,
           type: md.dstype,
           file: layer === Object(layer) ? layer.file : md.filepath
         };
+
+        if (override) final_layer.name = layerName;
+        else if (layer === Object(layer)) final_layer.name = layer.layer;
+        else final_layer.name = layer;
+
+        return final_layer;
       })
     );
+
     if (final_metadata.json && final_metadata.json.vector_layers) {
       Array.prototype.push.apply(
         final_metadata.json.vector_layers,
         md.json.vector_layers
       );
+
+      if (override && final_metadata.format === 'pbf') {
+        final_metadata.json.vector_layers = final_metadata.json.vector_layers.map(function(layer) {
+          layer.id = layerName;
+          return layer;
+        });  
+      }
     }
   });
+
   final_metadata.center[0] = (final_metadata.extent[0] + final_metadata.extent[2]) / 2;
   final_metadata.center[1] = (final_metadata.extent[1] + final_metadata.extent[3]) / 2;
-  //console.log(JSON.stringify(final_metadata, null, '  '));
+
   return _.template(xml)(final_metadata);
 };
 

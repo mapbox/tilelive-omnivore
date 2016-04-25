@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE Map[]>
+<Map srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over" maximum-extent="-20037508.34,-20037508.34,20037508.34,20037508.34">
+  <Parameters>
+    <Parameter name="center">-110.32476292309875,44.56502238336985,9</Parameter>
+    <Parameter name="bounds">-110.3650933429331,44.53327824851143,-110.28443250326441,44.596766518228264</Parameter>
+    <Parameter name="format">webp</Parameter>
+    
+    <Parameter name="maxzoom">15</Parameter>
+    <Parameter name="minzoom">9</Parameter>
+  </Parameters>
+  
+  
+  <Style name="named" filter-mode="first">
+    <Rule>
+      <RasterSymbolizer opacity="1" scaling="bilinear" />
+    </Rule>
+  </Style>
+  
+  <Layer name="named" buffer-size="0" srs="+proj=aea +lat_1=29.5 +lat_2=45.5 +lat_0=23 +lon_0=-96 +x_0=0 +y_0=0 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs">
+    <StyleName>named</StyleName>
+    <Datasource>
+      <Parameter name="type">gdal</Parameter>
+      <Parameter name="file">[FILEPATH]</Parameter>
+      <Parameter name="layer">sample</Parameter>
+      
+    </Datasource>
+  </Layer>
+  
+</Map>

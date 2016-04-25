@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE Map[]>
+<Map srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over" maximum-extent="-20037508.34,-20037508.34,20037508.34,20037508.34">
+  <Parameters>
+    <Parameter name="center">-77.0481382917019,38.93765872502635,0</Parameter>
+    <Parameter name="bounds">-77.0925920175155,38.9142786070481,-77.0036845658883,38.9610388430046</Parameter>
+    <Parameter name="format">pbf</Parameter>
+    <Parameter name="json"><![CDATA[{"vector_layers":[{"id":"named","description":"","minzoom":0,"maxzoom":22,"fields":{"BBL_LICENSE_FACT_ID":"Number","LICENSESTATUS":"String","LICENSECATEGORY":"String","CUST_NUM":"Number","TRADE_NAME":"String","LICENSE_START_DATE":"String","LICENSE_EXPIRATION_DATE":"String","LICENSE_ISSUE_DATE":"String","AGENT_PHONE":"String","LASTMODIFIEDDATE":"String","CITY":"String","STATE":"String","SITEADDRESS":"String","LATITUDE":"Number","LONGITUDE":"Number","ZIPCODE":"Number","MARADDRESSREPOSITORYID":"Number","DCSTATADDRESSKEY":"Number","DCSTATLOCATIONKEY":"Number","WARD":"Number","ANC":"String","SMD":"String","DISTRICT":"String","PSA":"Number","NEIGHBORHOODCLUSTER":"Number","HOTSPOT2006NAME":"String","HOTSPOT2005NAME":"String","HOTSPOT2004NAME":"String","BUSINESSIMPROVEMENTDISTRICT":"String"}}]}]]></Parameter>
+    <Parameter name="maxzoom">11</Parameter>
+    <Parameter name="minzoom">0</Parameter>
+  </Parameters>
+  
+  
+  <Layer name="named" buffer-size="8" srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
+    
+    <Datasource>
+      <Parameter name="type">csv</Parameter>
+      <Parameter name="file">[FILEPATH]</Parameter>
+      <Parameter name="layer">bbl_current_csv</Parameter>
+      
+    </Datasource>
+  </Layer>
+  
+</Map>
