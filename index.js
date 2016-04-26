@@ -92,8 +92,8 @@ Omnivore.getXml = function(metadata, layerName) {
     final.filesize += current.filesize;
     final.extent[0] = Math.min(final.extent[0], current.extent[0]);
     final.extent[1] = Math.min(final.extent[1], current.extent[1]);
-    final.extent[2] = Math.min(final.extent[2], current.extent[2]);
-    final.extent[3] = Math.min(final.extent[3], current.extent[3]);
+    final.extent[2] = Math.max(final.extent[2], current.extent[2]);
+    final.extent[3] = Math.max(final.extent[3], current.extent[3]);
     
     current.layers.forEach(function(layer) {
       layer = {
