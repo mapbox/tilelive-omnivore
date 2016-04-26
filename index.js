@@ -59,7 +59,6 @@ Omnivore.registerProtocols = function(tilelive) {
 
 Omnivore.getXml = function(metadata, layerName) {
   var override;
-  metadata = _.clone(metadata);
 
   if (Array.isArray(metadata)) {
     if (metadata.length > 1) {
@@ -71,52 +70,65 @@ Omnivore.getXml = function(metadata, layerName) {
 
   if (metadata.length === 1) override = metadata[0].layers.length === 1 && layerName;
 
-  //javascript: clone from an array doesn't work!!!
-  //var final_metadata = _.clone(metadata[0]);
-  var final_metadata = JSON.parse(JSON.stringify(metadata[0]));
-  delete final_metadata.filepath;
-  delete final_metadata.filename;
-  final_metadata.format = final_metadata.dstype === 'gdal' ? 'webp' : 'pbf';
-  final_metadata.layers = [];
-  final_metadata.filesize = 0;
-  if (final_metadata.json && final_metadata.json.vector_layers) { final_metadata.json.vector_layers = []; }
-  metadata.forEach(function(md) {
-    final_metadata.filesize += md.filesize;
-    final_metadata.extent[0] = Math.min(final_metadata.extent[0], md.extent[0]);
-    final_metadata.extent[1] = Math.min(final_metadata.extent[1], md.extent[1]);
-    final_metadata.extent[2] = Math.min(final_metadata.extent[2], md.extent[2]);
-    final_metadata.extent[3] = Math.min(final_metadata.extent[3], md.extent[3]);
-    Array.prototype.push.apply(
-      final_metadata.layers,
-      md.layers.map(function(layer) {
-        var final_layer = {
-          layer: layer === Object(layer) ? layer.layer : layer,
-          type: md.dstype,
-          file: layer === Object(layer) ? layer.file : md.filepath
-        };
+  var final_metadata = {
+    format: metadata[0].dstype === 'gdal' ? 'webp' : 'pbf',
+    layers: [],
+    filesize: 0,
+    center: metadata[0].center,
+    extent: metadata[0].extent,
+    projection: metadata[0].projection,
+    minzoom: metadata[0].minzoom,
+    maxzoom: metadata[0].maxzoom
+  };
 
-        if (override) final_layer.name = layerName;
-        else if (layer === Object(layer)) final_layer.name = layer.layer;
-        else final_layer.name = layer;
+  // What happens to filename for bundles?
 
-        return final_layer;
-      })
-    );
+  if (metadata[0].json && metadata[0].json.vector_layers) { 
+    final_metadata.json = { vector_layers: [] }; 
+  }
 
-    if (final_metadata.json && final_metadata.json.vector_layers) {
-      Array.prototype.push.apply(
-        final_metadata.json.vector_layers,
-        md.json.vector_layers
-      );
+  // Iterate through all layers and combine into a single tileset
+  final_metadata = metadata.reduce(function(final, current) {
+    final.filesize += current.filesize;
+    final.extent[0] = Math.min(final.extent[0], current.extent[0]);
+    final.extent[1] = Math.min(final.extent[1], current.extent[1]);
+    final.extent[2] = Math.min(final.extent[2], current.extent[2]);
+    final.extent[3] = Math.min(final.extent[3], current.extent[3]);
+    
+    current.layers = current.layers.map(function(layer) {
+      // Set layer object
+      layer = {
+        type: current.dstype,
+        layer: layer === Object(layer) ? layer.layer : layer,
+        file: layer === Object(layer) ? layer.file : current.filepath
+      };
 
-      if (override && final_metadata.format === 'pbf') {
-        final_metadata.json.vector_layers = final_metadata.json.vector_layers.map(function(layer) {
+      // Set layername
+      if (override) layer.name = layerName;
+      else if (layer === Object(layer)) layer.name = layer.layer;
+      else layer.name = layer;
+      
+      return layer;
+    });
+
+    // Copy over layers
+    final.layers = final.layers.concat(current.layers);
+
+    // Copy over vector_layers
+    if (final.json) {
+      current.json.vector_layers = current.json.vector_layers.map(function(layer){
+        if (override && final_metadata.format === 'pbf') {
           layer.id = layerName;
           return layer;
-        });  
-      }
+        } else return layer;
+      });
+
+      final.json.vector_layers = final.json.vector_layers.concat(current.json.vector_layers); 
     }
-  });
+
+    return final;
+
+  }, final_metadata);
 
   final_metadata.center[0] = (final_metadata.extent[0] + final_metadata.extent[2]) / 2;
   final_metadata.center[1] = (final_metadata.extent[1] + final_metadata.extent[3]) / 2;
