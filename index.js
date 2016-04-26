@@ -70,7 +70,7 @@ Omnivore.getXml = function(metadata, layerName) {
 
   if (metadata.length === 1) override = metadata[0].layers.length === 1 && layerName;
 
-  var final_metadata = {
+  var finalMetadata = {
     format: metadata[0].dstype === 'gdal' ? 'webp' : 'pbf',
     layers: [],
     filesize: 0,
@@ -84,19 +84,18 @@ Omnivore.getXml = function(metadata, layerName) {
   // What happens to filename for bundles?
 
   if (metadata[0].json && metadata[0].json.vector_layers) { 
-    final_metadata.json = { vector_layers: [] }; 
+    finalMetadata.json = { vector_layers: [] }; 
   }
 
   // Iterate through all layers and combine into a single tileset
-  final_metadata = metadata.reduce(function(final, current) {
+  finalMetadata = metadata.reduce(function(final, current) {
     final.filesize += current.filesize;
     final.extent[0] = Math.min(final.extent[0], current.extent[0]);
     final.extent[1] = Math.min(final.extent[1], current.extent[1]);
     final.extent[2] = Math.min(final.extent[2], current.extent[2]);
     final.extent[3] = Math.min(final.extent[3], current.extent[3]);
     
-    current.layers = current.layers.map(function(layer) {
-      // Set layer object
+    current.layers.forEach(function(layer) {
       layer = {
         type: current.dstype,
         layer: layer === Object(layer) ? layer.layer : layer,
@@ -107,33 +106,23 @@ Omnivore.getXml = function(metadata, layerName) {
       if (override) layer.name = layerName;
       else if (layer === Object(layer)) layer.name = layer.layer;
       else layer.name = layer;
-      
-      return layer;
+
+      final.layers.push(layer);
     });
 
-    // Copy over layers
-    final.layers = final.layers.concat(current.layers);
-
-    // Copy over vector_layers
-    if (final.json) {
-      current.json.vector_layers = current.json.vector_layers.map(function(layer){
-        if (override && final_metadata.format === 'pbf') {
-          layer.id = layerName;
-          return layer;
-        } else return layer;
-      });
-
-      final.json.vector_layers = final.json.vector_layers.concat(current.json.vector_layers); 
-    }
+    if (final.json) current.json.vector_layers.forEach(function(layer) {
+      if (override && final.format === 'pbf') layer.id = layerName;
+      final.json.vector_layers.push(layer);
+    });
 
     return final;
 
-  }, final_metadata);
+  }, finalMetadata);
 
-  final_metadata.center[0] = (final_metadata.extent[0] + final_metadata.extent[2]) / 2;
-  final_metadata.center[1] = (final_metadata.extent[1] + final_metadata.extent[3]) / 2;
+  finalMetadata.center[0] = (finalMetadata.extent[0] + finalMetadata.extent[2]) / 2;
+  finalMetadata.center[1] = (finalMetadata.extent[1] + finalMetadata.extent[3]) / 2;
 
-  return _.template(xml)(final_metadata);
+  return _.template(xml)(finalMetadata);
 };
 
 Omnivore.prototype.getInfo = function(callback) {
