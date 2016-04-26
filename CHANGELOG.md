@@ -1,5 +1,15 @@
 # Changelog
 
+
+
+## 2.4.0
+
+- Upgraded to mapnik-omnivore@7.4.0. This increases raster maxzoom to z22
+
+## 2.3.0
+
+- Layer name override 
+
 ## 2.2.1
 
 - Update tilelive-bridge, solving a bug in out-of-bounds x and y.
