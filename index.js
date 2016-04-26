@@ -96,18 +96,18 @@ Omnivore.getXml = function(metadata, layerName) {
     final.extent[3] = Math.max(final.extent[3], current.extent[3]);
     
     current.layers.forEach(function(layer) {
-      layer = {
-        type: current.dstype,
-        layer: layer === Object(layer) ? layer.layer : layer,
-        file: layer === Object(layer) ? layer.file : current.filepath
-      };
+      var finalLayer = layer;
 
-      // Set layername
-      if (override) layer.name = layerName;
-      else if (layer === Object(layer)) layer.name = layer.layer;
-      else layer.name = layer;
+      if (typeof layer === 'string') {
+        finalLayer = {
+          type: current.dstype,
+          layer: layer,
+          file: current.filepath,
+          name: override ? layerName : layer
+        };
+      } else finalLayer.name = layer.layer;
 
-      final.layers.push(layer);
+      final.layers.push(finalLayer);
     });
 
     if (final.json) current.json.vector_layers.forEach(function(layer) {
