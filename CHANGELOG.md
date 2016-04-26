@@ -1,8 +1,8 @@
 # Changelog
 
-## 2.2.2
+## 2.3.0
 
-- Updated  mapnik-omnivore to 7.3.1 (wip)
+- Upgraded to mapnik-omnivore@7.4.0. This increases raster maxzoom to z22
 
 ## 2.2.1
 
