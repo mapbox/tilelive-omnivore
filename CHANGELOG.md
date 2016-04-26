@@ -1,8 +1,14 @@
 # Changelog
 
-## 2.3.0
+
+
+## 2.4.0
 
 - Upgraded to mapnik-omnivore@7.4.0. This increases raster maxzoom to z22
+
+## 2.3.0
+
+- Support multiple input files
 
 ## 2.2.1
 
