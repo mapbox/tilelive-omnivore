@@ -8,7 +8,7 @@
 
 ## 2.3.0
 
-- Support multiple input files
+- Layer name override 
 
 ## 2.2.1
 
