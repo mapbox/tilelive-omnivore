@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-"use strict";
+'use strict';
 
 var path = require('path');
 var queue = require('queue-async');
@@ -12,25 +12,25 @@ var usage = 'usage: mapnik-omnivore <filepath>';
 var filepath = process.argv[2];
 
 if (!filepath) {
-	console.log(usage);
-	process.exit(1);
+  console.log(usage);
+  process.exit(1);
 }
 
 var files = filepath.split(',');
 var q = queue();
 files.forEach(function (filepath) {
-	filepath = path.resolve(filepath);
-	q.defer(function (next) {
-		getMetadata(filepath, function (err, metadata) {
-			if (err) throw err;
-			metadata.filepath = filepath;
-			next(null, metadata);
-		});
-	});
+  filepath = path.resolve(filepath);
+  q.defer(function (next) {
+    getMetadata(filepath, function (err, metadata) {
+      if (err) throw err;
+      metadata.filepath = filepath;
+      next(null, metadata);
+    });
+  });
 });
 
 q.awaitAll(function (err, mds) {
-	if (err) { console.log(err); throw err; }
-	console.log(Omnivore.getXml(mds));
+  if (err) { console.log(err); throw err; }
+  console.log(Omnivore.getXml(mds));
 });
 
