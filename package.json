@@ -1,6 +1,6 @@
 {
   "name": "tilelive-omnivore",
-  "version": "2.3.0",
+  "version": "2.4.0",
   "description": "Implements the tilelive API for a variety of raw data formats",
   "main": "index.js",
   "scripts": {
@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/mapbox/tilelive-omnivore",
   "dependencies": {
-    "mapnik-omnivore": "~7.3.0",
+    "mapnik-omnivore": "~7.4.0",
     "tilelive-bridge": "~2.3.1",
     "underscore": "^1.7.0"
   },
