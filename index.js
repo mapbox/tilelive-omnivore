@@ -68,7 +68,7 @@ Omnivore.getXml = function(metadata, layerName) {
     }
   } else metadata = [metadata];
 
-  if (metadata.length === 1) override = metadata[0].layers.length === 1 && layerName;
+  if (layerName && metadata[0].layers.length === 1 && metadata.length === 1) override = true;
 
   var finalMetadata = {
     format: metadata[0].dstype === 'gdal' ? 'webp' : 'pbf',
