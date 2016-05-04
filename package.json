@@ -4,7 +4,7 @@
   "description": "Implements the tilelive API for a variety of raw data formats",
   "main": "index.js",
   "scripts": {
-    "pretest": "eslint index.js test bin",
+    "pretest": "eslint index.js test bin/mapnik-omnivore",
     "test": "nyc tape test/index.js",
     "coverage": "nyc --reporter=html tape test/index.js && opener coverage/index.html"
   },

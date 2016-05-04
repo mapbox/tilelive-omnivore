@@ -1,0 +1,60 @@
+{
+  "filetype": ".geojson",
+  "dstype": "geojson",
+  "filesize": 3084,
+  "center": [
+    -99.7981733,
+    33.987195
+  ],
+  "extent": [
+    -122.6870466,
+    28.98049,
+    -76.9093,
+    38.9939
+  ],
+  "minzoom": 0,
+  "maxzoom": 7,
+  "projection": "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs",
+  "json": {
+    "vector_layers": [
+      {
+        "id": "DC_polygon.geo",
+        "description": "",
+        "minzoom": 0,
+        "maxzoom": 22,
+        "fields": {
+          "kind": "String",
+          "name": "String",
+          "state": "String"
+        }
+      },
+      {
+        "id": "places.geo",
+        "description": "",
+        "minzoom": 0,
+        "maxzoom": 22,
+        "fields": {
+          "Address": "String",
+          "City": "String",
+          "Country": "String",
+          "Site": "String",
+          "geo_latitude": "Number",
+          "geo_longitude": "Number"
+        }
+      }
+    ]
+  },
+  "layers": [
+    {
+      "layer": "DC_polygon.geo",
+      "type": "geojson",
+      "file": "c:\\mb\\tilelive-omnivore\\node_modules\\mapnik-test-data\\data\\geojson\\DC_polygon.geo.json"
+    },
+    {
+      "layer": "places.geo",
+      "type": "geojson",
+      "file": "c:\\mb\\tilelive-omnivore\\node_modules\\mapnik-test-data\\data\\geojson\\places.geo.json"
+    }
+  ],
+  "format": "pbf"
+}
