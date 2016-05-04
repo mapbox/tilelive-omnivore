@@ -21,7 +21,7 @@ function Omnivore(uri, callback) {
     var filepath = path.resolve(file);
     q.defer(function(next) {
       getMetadata(filepath, function(err, metadata) {
-        if (err) next(err);
+        if (err) return callback(err);
         // Stopgap while only 8 bit TIFFs are supported
         if (metadata.dstype === 'gdal' && metadata.raster.bands[0].rasterDatatype !== 'Byte') {
           return next('Only 8 bit TIFFs are supported');
