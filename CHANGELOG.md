@@ -1,6 +1,12 @@
 # Changelog
 
+## 2.5.1
 
+- Fix error handling
+
+## 2.5.0
+
+- Bundle support: Ability to handle multiple files for a single tileset
 
 ## 2.4.0
 
