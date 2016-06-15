@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.5.2
+
+- move queue-async from devDependency to dependency
+
 ## 2.5.1
 
 - Fix error handling
@@ -14,7 +18,7 @@
 
 ## 2.3.0
 
-- Layer name override 
+- Layer name override
 
 ## 2.2.1
 
