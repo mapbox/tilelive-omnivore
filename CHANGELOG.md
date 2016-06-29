@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.0.0
+
+- Will no longer provide a recommended max zoom level less than 6
+
 ## 2.5.2
 
 - move queue-async from devDependency to dependency
