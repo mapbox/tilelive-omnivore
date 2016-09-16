@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/mapbox/tilelive-omnivore",
   "dependencies": {
-    "mapnik-omnivore": "https://github.com/mapbox/mapnik-omnivore/tarball/tag-fiesta",
+    "mapnik-omnivore": "~8.1.0",
     "queue-async": "^1.0.7",
     "tilelive-bridge": "~2.3.1",
     "underscore": "^1.7.0"
