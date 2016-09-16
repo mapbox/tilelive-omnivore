@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.1.0
+
+- Upgraded to mapnik-omnivore@8.1.0 (includes gdal and mapnik releases)
+
 ## 3.0.0
 
 - Will no longer provide a recommended max zoom level less than 6
