@@ -5,7 +5,7 @@
 var path = require('path');
 var queue = require('queue-async');
 var Omnivore = require('..');
-var getMetadata = require('mapnik-omnivore').digest;
+var getMetadata = require('@mapbox/mapnik-omnivore').digest;
 
 var usage = 'usage: mapnik-omnivore <filepath>';
 
