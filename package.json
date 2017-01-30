@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/mapbox/tilelive-omnivore",
   "dependencies": {
-    "mapnik-omnivore": "~8.1.0",
+    "@mapbox/mapnik-omnivore": "https://mapbox-npm.s3.amazonaws.com/package/mapbox-mapnik-omnivore-8.2.0-1-gc34415f-a7ab28e2ef380ee77f219149cb44f6fb1705571a.tgz",
     "queue-async": "^1.0.7",
     "tilelive-bridge": "~2.3.1",
     "underscore": "^1.7.0"

@@ -2,7 +2,7 @@ var url = require('url');
 var path = require('path');
 var fs = require('fs');
 var Bridge = require('tilelive-bridge');
-var getMetadata = require('mapnik-omnivore').digest;
+var getMetadata = require('@mapbox/mapnik-omnivore').digest;
 var _ = require('underscore');
 var queue = require('queue-async');
 
