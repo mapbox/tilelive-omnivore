@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.1.1
+
+- Upgraded mapnik-omnivore@8.2.0 (maxzoom bump to z23)
+
 ## 3.1.0
 
 - Upgraded to mapnik-omnivore@8.1.0 (includes gdal and mapnik releases)

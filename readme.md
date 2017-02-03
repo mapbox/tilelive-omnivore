@@ -7,13 +7,13 @@ Implements the tilelive api for a variety of raw data sources
 ## Install
 
 ```
-npm install -g tilelive-omnivore
+npm install -g @mapbox/tilelive-omnivore
 ```
 
 ## Example
 
 ```javascript
-var Omnivore = require('tilelive-omnivore');
+var Omnivore = require('@mapbox/tilelive-omnivore');
 var filepath = '/absolute/path/to/geographic/data';
 var uri = 'omnivore://' + filepath;
 
