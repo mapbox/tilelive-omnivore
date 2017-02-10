@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.1.2
+
+- Upgraded mapnik-omnivore@8.2.2 (collect all geojson feature properties)
+
 ## 3.1.1
 
 - Upgraded mapnik-omnivore@8.2.0 (maxzoom bump to z23)
