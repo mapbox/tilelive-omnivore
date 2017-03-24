@@ -12,7 +12,6 @@
 ## 3.1.1
 
 - Upgraded mapnik-omnivore@8.2.0 (maxzoom bump to z23)
->>>>>>> master
 
 ## 3.1.0
 
