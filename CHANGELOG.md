@@ -1,5 +1,10 @@
 # Changelog
 
+## 3.2.0
+
+- Upgraded to mapnik-omnivore@8.3.0 (includes new CSV error handling & feature-specific zoom levels)
+- Update other dependencies to @mapbox NPM namespace
+
 ## 3.1.2
 
 - Upgraded mapnik-omnivore@8.2.2 (collect all geojson feature properties)
