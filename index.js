@@ -18,8 +18,8 @@ function Omnivore(uri, callback) {
 
   var q = queue();
   files.forEach(function(file) {
-    if (uri.hostname === '.' || uri.hostname === '.') {
-      file = uri.hostname + file
+    if (uri.hostname === '.' || uri.hostname === '..') {
+      file = uri.hostname + file;
     }
     var filepath = path.resolve(file);
     q.defer(function(next) {
