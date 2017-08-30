@@ -11,7 +11,7 @@
   </Parameters>
   
   
-  <Layer name="waypoints" buffer-size="8" srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
+  <Layer name="waypoints" buffer-size="5" srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
     
     <Datasource>
       <Parameter name="type">ogr</Parameter>
@@ -22,7 +22,7 @@
   </Layer>
   
   
-  <Layer name="routes" buffer-size="8" srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
+  <Layer name="routes" buffer-size="5" srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
     
     <Datasource>
       <Parameter name="type">ogr</Parameter>
@@ -33,7 +33,7 @@
   </Layer>
   
   
-  <Layer name="route_points" buffer-size="8" srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
+  <Layer name="route_points" buffer-size="5" srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
     
     <Datasource>
       <Parameter name="type">ogr</Parameter>

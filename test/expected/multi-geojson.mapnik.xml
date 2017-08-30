@@ -11,7 +11,7 @@
   </Parameters>
   
   
-  <Layer name="DC_polygon.geo" buffer-size="8" srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
+  <Layer name="DC_polygon.geo" buffer-size="5" srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
     
     <Datasource>
       <Parameter name="type">geojson</Parameter>
@@ -22,7 +22,7 @@
   </Layer>
   
   
-  <Layer name="places.geo" buffer-size="8" srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
+  <Layer name="places.geo" buffer-size="5" srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
     
     <Datasource>
       <Parameter name="type">geojson</Parameter>

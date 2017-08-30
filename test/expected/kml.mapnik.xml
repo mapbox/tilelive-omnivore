@@ -11,7 +11,7 @@
   </Parameters>
   
   
-  <Layer name="Magnitude 6" buffer-size="8" srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
+  <Layer name="Magnitude 6" buffer-size="5" srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
     
     <Datasource>
       <Parameter name="type">ogr</Parameter>
@@ -22,7 +22,7 @@
   </Layer>
   
   
-  <Layer name="Magnitude 5" buffer-size="8" srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
+  <Layer name="Magnitude 5" buffer-size="5" srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
     
     <Datasource>
       <Parameter name="type">ogr</Parameter>
@@ -33,7 +33,7 @@
   </Layer>
   
   
-  <Layer name="Magnitude 4" buffer-size="8" srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
+  <Layer name="Magnitude 4" buffer-size="5" srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
     
     <Datasource>
       <Parameter name="type">ogr</Parameter>
@@ -44,7 +44,7 @@
   </Layer>
   
   
-  <Layer name="Magnitude 3" buffer-size="8" srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
+  <Layer name="Magnitude 3" buffer-size="5" srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
     
     <Datasource>
       <Parameter name="type">ogr</Parameter>
@@ -55,7 +55,7 @@
   </Layer>
   
   
-  <Layer name="Magnitude 2" buffer-size="8" srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
+  <Layer name="Magnitude 2" buffer-size="5" srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
     
     <Datasource>
       <Parameter name="type">ogr</Parameter>
@@ -66,7 +66,7 @@
   </Layer>
   
   
-  <Layer name="Magnitude 1" buffer-size="8" srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
+  <Layer name="Magnitude 1" buffer-size="5" srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
     
     <Datasource>
       <Parameter name="type">ogr</Parameter>

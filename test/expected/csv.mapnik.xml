@@ -11,7 +11,7 @@
   </Parameters>
   
   
-  <Layer name="bbl_current_csv" buffer-size="8" srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
+  <Layer name="bbl_current_csv" buffer-size="5" srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
     
     <Datasource>
       <Parameter name="type">csv</Parameter>
