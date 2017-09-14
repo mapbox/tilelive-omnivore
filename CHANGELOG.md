@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.4.0
+
+- Upgrade to use tilelive-bridge 2.5.0
+
 ## 3.3.0
 
 - Upgraded to use mapnik 3.6.0
