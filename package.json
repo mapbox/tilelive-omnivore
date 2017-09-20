@@ -20,7 +20,7 @@
   "homepage": "https://github.com/mapbox/tilelive-omnivore",
   "dependencies": {
     "@mapbox/mapnik-omnivore": "~8.4.0",
-    "@mapbox/tilelive-bridge": "~2.5.0",
+    "@mapbox/tilelive-bridge": "mapbox/tilelive-bridge#806d7980742d86eb71a34a89d905e82322ed6467",
     "queue-async": "^1.0.7",
     "underscore": "^1.7.0"
   },
