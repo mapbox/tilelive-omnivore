@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.5.0
+
+- Upgraded mapnik-omnivore@8.5.0 (clamp rasters at z0)
+
 ## 3.4.0
 
 - Upgrade to use tilelive-bridge 2.5.0
