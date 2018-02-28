@@ -1,5 +1,12 @@
 # Changelog
 
+## 4.0.0
+
+- Updated mapnik-omnivore to 9.0.0
+- Updated tilelive-bridge to 3.0.0
+- Drops windows support
+- Now uses node-mapnik 3.7.0
+
 ## 3.5.0
 
 - Upgraded mapnik-omnivore@8.5.0 (clamp rasters at z0)
