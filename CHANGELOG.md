@@ -1,5 +1,9 @@
 # Changelog
 
+## 4.1.0
+
+- Updated tilelive-bridge to 3.1.0
+
 ## 4.0.0
 
 - Updated mapnik-omnivore to 9.0.0
