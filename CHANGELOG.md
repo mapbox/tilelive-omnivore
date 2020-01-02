@@ -1,5 +1,9 @@
 # Changelog
 
+## 4.2.0
+
+- Update dependencies to work with node10
+
 ## 4.1.0
 
 - Updated tilelive-bridge to 3.1.0
