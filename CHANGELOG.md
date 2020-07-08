@@ -1,5 +1,9 @@
 # Changelog
 
+## 4.1.1
+
+- Update tilelive-bridge to 3.1.2
+
 ## 4.1.0
 
 - Updated tilelive-bridge to 3.1.0
