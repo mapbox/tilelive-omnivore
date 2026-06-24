@@ -1,6 +1,6 @@
 {
   "name": "@mapbox/tilelive-omnivore",
-  "version": "4.3.0",
+  "version": "4.3.1",
   "description": "Implements the tilelive API for a variety of raw data formats",
   "main": "index.js",
   "scripts": {
@@ -36,5 +36,8 @@
     "tape": "^3.0.1",
     "@mapbox/tilelive": "^5.11.0",
     "vector-tile": "^1.2.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
