@@ -28,7 +28,7 @@
     "mapnik-omnivore": "bin/mapnik-omnivore"
   },
   "devDependencies": {
-    "eslint": "^2.4.0",
+    "eslint": "^4.18.2",
     "mapnik-test-data": "https://mapbox-npm.s3.amazonaws.com/package/mapnik-test-data-2.1.1-d1476b261f018c28f08c573de3c9885386f52315.tgz",
     "nyc": "^6.0.0",
     "opener": "^1.4.1",
